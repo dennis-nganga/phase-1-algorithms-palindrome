@@ -1,25 +1,16 @@
 function isPalindrome(word) {
-  // Write your algorithm here
+  // Remove non-letter characters and convert to lowercase
+  const cleanWord = word.toLowerCase().replace(/[^a-z]/g, '');
+
+  // Check if the clean word is the same forwards and backwards
+  return cleanWord === cleanWord.split('').reverse().join('');
 }
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
-if (require.main === module) {
-  // add your own custom tests in here
-  console.log("Expecting: true");
-  console.log("=>", isPalindrome("racecar"));
-
-  console.log("");
-
-  console.log("Expecting: false");
-  console.log("=>", isPalindrome("robot"));
-}
-
-module.exports = isPalindrome;
+// Test cases
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("level")); // true
+console.log(isPalindrome("Was it a car or a cat I saw?")); // true
+console.log(isPalindrome("A man, a plan, a canal, Panama!")); // true
+console.log(isPalindrome("hello")); // false
+console.log(isPalindrome("hello world")); // false
+console.log(isPalindrome("")); // true
